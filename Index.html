@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2000 English Words — Affan's Vocab Book</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap');
+
+  :root {
+    --gold: #f5c518;
+    --purple: #9d4edd;
+    --blue: #00d4ff;
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --card: #1a1a26;
+    --text: #e8e8f0;
+    --muted: #888;
+    --green: #00ff88;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a0a0f 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 30px 20px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 40px rgba(157,78,221,0.3);
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 4vw, 32px);
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px rgba(245,197,24,0.5);
+  }
+
+  header p {
+    color: var(--blue);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: var(--surface);
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .progress-bar-outer {
+    flex: 1;
+    background: #1e1e2e;
+    border-radius: 50px;
+    height: 14px;
+    min-width: 150px;
+    overflow: hidden;
+    border: 1px solid #333;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+
+  .progress-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .stat-pill {
+    background: #1e1e2e;
+    border: 1px solid var(--purple);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: var(--blue);
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* CONTROLS */
+  .controls {
+    max-width: 1200px;
+    margin: 0 auto 16px;
+    padding: 0 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  input[type="text"] {
+    background: var(--card);
+    border: 1px solid var(--purple);
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    flex: 1;
+    min-width: 180px;
+    outline: none;
+  }
+
+  input[type="text"]:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(245,197,24,0.2); }
+
+  select {
+    background: var(--card);
+    border: 1px solid var(--purple);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .btn {
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+
+  .btn-gold { background: var(--gold); color: #000; }
+  .btn-gold:hover { box-shadow: 0 0 14px rgba(245,197,24,0.5); }
+  .btn-purple { background: var(--purple); color: #fff; }
+  .btn-purple:hover { box-shadow: 0 0 14px rgba(157,78,221,0.5); }
+  .btn-blue { background: transparent; border: 1px solid var(--blue); color: var(--blue); }
+  .btn-blue:hover { background: var(--blue); color: #000; }
+
+  /* TABLE WRAP */
+  .table-wrap {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 16px;
+  }
+
+  .level-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 12px 16px;
+    margin: 30px 0 12px;
+    background: linear-gradient(90deg, rgba(245,197,24,0.08), transparent);
+    letter-spacing: 2px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+  }
+
+  thead tr {
+    background: linear-gradient(90deg, #1e0a3c, #0a1e3c);
+    border-bottom: 2px solid var(--gold);
+  }
+
+  thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #1e1e2e;
+    transition: background 0.2s;
+  }
+
+  tbody tr:hover { background: rgba(157,78,221,0.07); }
+
+  tbody tr.learned {
+    background: rgba(0,255,136,0.04);
+    opacity: 0.65;
+  }
+
+  tbody tr.learned td { color: #666; }
+  tbody tr.learned td:nth-child(2) { text-decoration: line-through; color: var(--green); }
+
+  td {
+    padding: 11px 12px;
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+
+  td:first-child { color: var(--muted); font-size: 12px; width: 46px; text-align: center; }
+  td:nth-child(2) { font-weight: 700; color: #fff; font-size: 16px; }
+  td:nth-child(3) { color: var(--blue); font-size: 13px; font-style: italic; }
+  td:nth-child(4) { color: var(--gold); font-weight: 600; }
+  td:nth-child(5) { color: #aaa; font-size: 13px; max-width: 260px; }
+  td:last-child { text-align: center; width: 60px; }
+
+  /* CHECKBOX */
+  .cb-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cb-wrap input[type="checkbox"] {
+    display: none;
+  }
+
+  .cb-label {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--purple);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-size: 16px;
+    color: transparent;
+    background: transparent;
+    user-select: none;
+  }
+
+  .cb-wrap input:checked + .cb-label {
+    background: var(--green);
+    border-color: var(--green);
+    color: #000;
+    box-shadow: 0 0 10px rgba(0,255,136,0.4);
+  }
+
+  /* HIDDEN ROW */
+  tr[data-hidden="true"] { display: none; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    border-top: 1px solid #1e1e2e;
+  }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-1 { background: rgba(0,212,255,0.15); color: var(--blue); border: 1px solid var(--blue); }
+  .badge-2 { background: rgba(157,78,221,0.15); color: var(--purple); border: 1px solid var(--purple); }
+  .badge-3 { background: rgba(245,197,24,0.15); color: var(--gold); border: 1px solid var(--gold); }
+  .badge-4 { background: rgba(255,60,60,0.15); color: #ff6060; border: 1px solid #ff6060; }
+
+  @media (max-width: 700px) {
+    td:nth-child(5) { display: none; }
+    thead th:nth-child(5) { display: none; }
+    td { padding: 9px 7px; font-size: 13px; }
+    td:nth-child(2) { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📖 ENGLISH VOCABULARY BOOK</h1>
+  <p>AFFAN'S PERSONAL WORD COLLECTION — 2000 WORDS</p>
+</header>
+
+<div style="max-width:1200px;margin:20px auto;padding:0 16px;">
+  <div class="progress-wrap">
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="progressBar" style="width:0%"></div></div>
+    <span class="progress-text" id="progressText">0 / 0 Learned</span>
+    <span class="stat-pill" id="percentPill">0%</span>
+    <button class="btn btn-blue" onclick="resetAll()">RESET ALL</button>
+    <button class="btn btn-gold" onclick="showOnlyUnlearned()">SHOW UNLEARNED</button>
+    <button class="btn btn-purple" onclick="showAll()">SHOW ALL</button>
+  </div>
+</div>
+
+<div class="controls">
+  <input type="text" id="searchInput" placeholder="🔍  Search any word..." oninput="filterWords()">
+  <select id="levelFilter" onchange="filterWords()">
+    <option value="">All Levels</option>
+    <option value="1">Level 1 — Beginner</option>
+    <option value="2">Level 2 — Intermediate</option>
+    <option value="3">Level 3 — Advanced</option>
+    <option value="4">Level 4 — Expert</option>
+  </select>
+</div>
+
+<div class="table-wrap" id="mainContent"></div>
+
+<footer>AFFAN'S VOCAB BOOK &nbsp;·&nbsp; LEVEL UP YOUR ENGLISH &nbsp;·&nbsp; ANÍVEL CULTURE</footer>
+
+<script>
+// ===================== WORD DATA =====================
+const wordData = {
+  "Level 1 — Beginner (Everyday Words)": [
+    ["Accept","ak-SEPT","स्वीकार करना","I accept your apology.",1],
+    ["Achieve","uh-CHEEV","हासिल करना","Work hard to achieve your goals.",1],
+    ["Afraid","uh-FRAYD","डरा हुआ","Don't be afraid of failure.",1],
+    ["Allow","uh-LOW","अनुमति देना","Please allow me to explain.",1],
+    ["Answer","AN-ser","जवाब देना","Answer the question carefully.",1],
+    ["Appear","uh-PEER","दिखाई देना","She appeared calm.",1],
+    ["Ask","ASK","पूछना","Always ask questions.",1],
+    ["Begin","bih-GIN","शुरू करना","Let us begin now.",1],
+    ["Believe","bih-LEEV","विश्वास करना","I believe in you.",1],
+    ["Borrow","BOR-oh","उधार लेना","Can I borrow your pen?",1],
+    ["Break","BRAYK","तोड़ना","Don't break the rules.",1],
+    ["Build","BILD","बनाना","We will build something great.",1],
+    ["Buy","BY","खरीदना","I want to buy a new phone.",1],
+    ["Carry","KAIR-ee","ले जाना","Please carry this bag.",1],
+    ["Change","CHAYNJ","बदलना","Change your mindset.",1],
+    ["Choose","CHOOZ","चुनना","Choose wisely.",1],
+    ["Clean","KLEEN","साफ़ करना","Clean your workspace daily.",1],
+    ["Close","KLOHZ","बंद करना","Close the door gently.",1],
+    ["Come","KUM","आना","Come here quickly.",1],
+    ["Create","kree-AYT","बनाना","Create something amazing.",1],
+    ["Decide","dih-SYD","फैसला करना","Decide before it is too late.",1],
+    ["Depend","dih-PEND","निर्भर होना","Don't depend on others too much.",1],
+    ["Dream","DREEM","सपना देखना","Dream big every day.",1],
+    ["Drive","DRYV","चलाना / प्रेरित करना","Passion should drive your work.",1],
+    ["Earn","URN","कमाना","Work hard and earn respect.",1],
+    ["Enjoy","en-JOY","आनंद लेना","Enjoy every moment.",1],
+    ["Enter","EN-ter","अंदर जाना","Enter the room quietly.",1],
+    ["Explain","eks-PLAYN","समझाना","Please explain your idea.",1],
+    ["Fall","FAWL","गिरना","Fall, then rise again.",1],
+    ["Feel","FEEL","महसूस करना","Feel the energy around you.",1],
+    ["Fight","FYT","लड़ना","Fight for what you believe.",1],
+    ["Find","FYND","ढूंढना","Find your purpose.",1],
+    ["Follow","FOL-oh","अनुसरण करना","Follow your instincts.",1],
+    ["Forget","fer-GET","भूलना","Never forget your roots.",1],
+    ["Forgive","fer-GIV","माफ़ करना","Learn to forgive others.",1],
+    ["Give","GIV","देना","Give more than you take.",1],
+    ["Grow","GROH","बढ़ना","Grow every single day.",1],
+    ["Happen","HAP-en","होना","What happened yesterday?",1],
+    ["Help","HELP","मदद करना","Help others when you can.",1],
+    ["Hold","HOHLD","पकड़ना","Hold on to your dreams.",1],
+    ["Hope","HOHP","उम्मीद रखना","Never lose hope.",1],
+    ["Improve","im-PROOV","सुधारना","Improve yourself daily.",1],
+    ["Include","in-KLOOD","शामिल करना","Include everyone in the plan.",1],
+    ["Increase","in-KREES","बढ़ाना","Increase your efforts.",1],
+    ["Join","JOYN","जुड़ना","Join the team today.",1],
+    ["Keep","KEEP","रखना","Keep moving forward.",1],
+    ["Know","NOH","जानना","Know your strengths.",1],
+    ["Learn","LURN","सीखना","Learn something new every day.",1],
+    ["Leave","LEEV","छोड़ना","Leave your comfort zone.",1],
+    ["Listen","LIS-en","सुनना","Listen carefully.",1],
+    ["Live","LIV","जीना","Live with purpose.",1],
+    ["Look","LUK","देखना","Look at the bigger picture.",1],
+    ["Lose","LOOZ","हारना / खोना","Don't be afraid to lose.",1],
+    ["Love","LUV","प्यार करना","Love what you do.",1],
+    ["Make","MAYK","बनाना","Make every second count.",1],
+    ["Meet","MEET","मिलना","Meet new people daily.",1],
+    ["Move","MOOV","हिलना / आगे बढ़ना","Move forward always.",1],
+    ["Need","NEED","ज़रूरत होना","You need discipline.",1],
+    ["Open","OH-pen","खोलना","Open your mind.",1],
+    ["Pay","PAY","भुगतान करना","Pay attention to details.",1],
+    ["Plan","PLAN","योजना बनाना","Plan your day the night before.",1],
+    ["Play","PLAY","खेलना","Play to win.",1],
+    ["Practice","PRAK-tis","अभ्यास करना","Practice makes perfect.",1],
+    ["Push","PUSH","धकेलना / मेहनत करना","Push your limits.",1],
+    ["Read","REED","पढ़ना","Read books every day.",1],
+    ["Realize","REE-uh-lyz","समझ आना","Realize your potential.",1],
+    ["Receive","rih-SEEV","पाना","Receive feedback with grace.",1],
+    ["Remember","rih-MEM-ber","याद करना","Remember your goal.",1],
+    ["Return","rih-TURN","वापस आना","Return stronger than before.",1],
+    ["Run","RUN","दौड़ना","Run your own race.",1],
+    ["Save","SAYV","बचाना","Save your energy for the right fight.",1],
+    ["Say","SAY","कहना","Say what you mean.",1],
+    ["See","SEE","देखना","See the opportunity in every problem.",1],
+    ["Send","SEND","भेजना","Send the email today.",1],
+    ["Show","SHOH","दिखाना","Show your real self.",1],
+    ["Speak","SPEEK","बोलना","Speak confidently.",1],
+    ["Stand","STAND","खड़े होना / टिके रहना","Stand for something.",1],
+    ["Start","START","शुरू करना","Start before you feel ready.",1],
+    ["Stay","STAY","रुकना","Stay consistent.",1],
+    ["Stop","STOP","रुकना / बंद करना","Stop making excuses.",1],
+    ["Study","STUD-ee","पढ़ाई करना","Study with full focus.",1],
+    ["Take","TAYK","लेना","Take responsibility.",1],
+    ["Talk","TAWK","बात करना","Talk less, act more.",1],
+    ["Think","THINK","सोचना","Think before you speak.",1],
+    ["Try","TRY","कोशिश करना","Try one more time.",1],
+    ["Turn","TURN","मुड़ना","Turn your pain into power.",1],
+    ["Understand","un-der-STAND","समझना","Understand your audience.",1],
+    ["Use","YOOZ","इस्तेमाल करना","Use your time wisely.",1],
+    ["Wait","WAYT","इंतज़ार करना","Wait patiently.",1],
+    ["Walk","WAWK","चलना","Walk the talk.",1],
+    ["Want","WONT","चाहना","Want it bad enough.",1],
+    ["Win","WIN","जीतना","Win with humility.",1],
+    ["Work","WURK","काम करना","Work smarter, not harder.",1],
+    ["Write","RYT","लिखना","Write your goals down.",1],
+  ],
+
+  "Level 2 — Intermediate (Smart Vocabulary)": [
+    ["Absolute","AB-suh-loot","पूर्ण / बिल्कुल","This is absolute nonsense.",2],
+    ["Adapt","uh-DAPT","अनुकूल होना","Adapt to change quickly.",2],
+    ["Advantage","ad-VAN-tij","फायदा","Use every advantage you have.",2],
+    ["Ambition","am-BISH-un","महत्त्वाकांक्षा","Ambition drives great leaders.",2],
+    ["Ancient","AYN-shunt","प्राचीन","Ancient wisdom still applies today.",2],
+    ["Anxiety","ang-ZY-uh-tee","चिंता","Anxiety is the enemy of focus.",2],
+    ["Appreciate","uh-PREE-shee-ayt","सराहना करना","Appreciate what you have.",2],
+    ["Approach","uh-PROHCH","तरीका / पहुंचना","Change your approach to problems.",2],
+    ["Attitude","AT-ih-tyood","नजरिया","Your attitude defines your altitude.",2],
+    ["Aware","uh-WAIR","जागरूक","Be aware of your surroundings.",2],
+    ["Balance","BAL-uns","संतुलन","Maintain balance in all areas of life.",2],
+    ["Benefit","BEN-uh-fit","लाभ","Exercise has many benefits.",2],
+    ["Blame","BLAYM","दोष देना","Stop blaming others for your problems.",2],
+    ["Bold","BOHLD","साहसी / स्पष्ट","Make bold decisions.",2],
+    ["Calm","KAHM","शांत","Stay calm under pressure.",2],
+    ["Capable","KAY-puh-bul","सक्षम","You are more capable than you think.",2],
+    ["Challenge","CHAL-inj","चुनौती","Every challenge makes you stronger.",2],
+    ["Clear","KLEER","स्पष्ट","Be clear about your goals.",2],
+    ["Clever","KLEV-er","चालाक","A clever person learns from others' mistakes.",2],
+    ["Commitment","kuh-MIT-ment","प्रतिबद्धता","Commitment beats talent every time.",2],
+    ["Compare","kum-PAIR","तुलना करना","Don't compare yourself to others.",2],
+    ["Compete","kum-PEET","प्रतिस्पर्धा करना","Compete with yesterday's version of yourself.",2],
+    ["Concern","kun-SURN","चिंता / मामला","Your success is my concern.",2],
+    ["Confident","KON-fih-dunt","आत्मविश्वासी","Be confident, not arrogant.",2],
+    ["Consistent","kun-SIS-tent","नियमित / एकसमान","Be consistent with your efforts.",2],
+    ["Control","kun-TROHL","नियंत्रण","Control your reactions.",2],
+    ["Convince","kun-VINS","मनाना","Convince with logic and passion.",2],
+    ["Courage","KUR-ij","साहस","Courage is doing it scared.",2],
+    ["Creative","kree-AY-tiv","रचनात्मक","Be creative in solving problems.",2],
+    ["Critical","KRIT-ih-kul","आलोचनात्मक / महत्त्वपूर्ण","Critical thinking is a superpower.",2],
+    ["Curious","KYOOR-ee-us","जिज्ञासु","Stay curious always.",2],
+    ["Dedicate","DED-ih-kayt","समर्पित करना","Dedicate time to what matters.",2],
+    ["Define","dih-FYN","परिभाषित करना","Define your own success.",2],
+    ["Delay","dih-LAY","देर करना","Don't delay important decisions.",2],
+    ["Deny","dih-NY","इनकार करना","Never deny your mistakes.",2],
+    ["Deserve","dih-ZURV","लायक होना","You deserve what you work for.",2],
+    ["Develop","dih-VEL-up","विकसित करना","Develop good habits early.",2],
+    ["Difficult","DIF-ih-kult","कठिन","Difficult roads lead to beautiful destinations.",2],
+    ["Direction","dih-REK-shun","दिशा","Move in the right direction.",2],
+    ["Discipline","DIS-ih-plin","अनुशासन","Discipline is the bridge between goals and success.",2],
+    ["Dominate","DOM-ih-nayt","हावी होना","Dominate your craft.",2],
+    ["Doubt","DOWT","संदेह","Doubt kills more dreams than failure.",2],
+    ["Effective","ih-FEK-tiv","प्रभावी","Find the most effective method.",2],
+    ["Effort","EF-ert","प्रयास","Effort is always noticed.",2],
+    ["Emotion","ih-MOH-shun","भावना","Manage your emotions smartly.",2],
+    ["Encourage","en-KUR-ij","प्रोत्साहित करना","Encourage others around you.",2],
+    ["Energy","EN-er-jee","ऊर्जा","Protect your energy fiercely.",2],
+    ["Enhance","en-HANS","बेहतर बनाना","Enhance your skills every day.",2],
+    ["Environment","en-VY-run-ment","वातावरण","Your environment shapes your mindset.",2],
+    ["Essential","ih-SEN-shul","ज़रूरी","Sleep is essential for performance.",2],
+    ["Establish","ih-STAB-lish","स्थापित करना","Establish a daily routine.",2],
+    ["Evidence","EV-ih-dens","सबूत","Show evidence, not just words.",2],
+    ["Exact","eg-ZAKT","बिल्कुल सही","Be exact in your planning.",2],
+    ["Exceed","ek-SEED","पार करना","Exceed every expectation.",2],
+    ["Excellent","EK-suh-lent","उत्कृष्ट","Excellent results need excellent effort.",2],
+    ["Exist","eg-ZIST","मौजूद होना","Opportunities exist everywhere.",2],
+    ["Experience","ek-SPEER-ee-uns","अनुभव","Experience is the best teacher.",2],
+    ["Expert","EK-spurt","विशेषज्ञ","Become an expert in your field.",2],
+    ["Explore","ek-SPLOR","खोजना","Explore new ideas daily.",2],
+    ["Express","ek-SPRES","व्यक्त करना","Express yourself clearly.",2],
+    ["Fail","FAYL","असफल होना","Fail fast, learn faster.",2],
+    ["Fair","FAIR","उचित","Always be fair in your dealings.",2],
+    ["Famous","FAY-mus","प्रसिद्ध","Famous people were once unknown.",2],
+    ["Fear","FEER","डर","Fear is just a feeling.",2],
+    ["Flexible","FLEK-sih-bul","लचीला","Stay flexible in your plans.",2],
+    ["Focus","FOH-kus","ध्यान देना","Focus is a superpower.",2],
+    ["Force","FORS","ताकत / मजबूर करना","Force yourself to level up.",2],
+    ["Foundation","fown-DAY-shun","नींव","Build a strong foundation first.",2],
+    ["Freedom","FREE-dum","आज़ादी","Freedom comes from discipline.",2],
+    ["Genuine","JEN-yoo-in","असली / सच्चा","Be genuine in everything you do.",2],
+    ["Grateful","GRAYT-ful","आभारी","Be grateful for small wins.",2],
+    ["Habit","HAB-it","आदत","Good habits create good lives.",2],
+    ["Honest","ON-ist","ईमानदार","Be honest with yourself first.",2],
+    ["Humble","HUM-bul","विनम्र","Stay humble as you grow.",2],
+    ["Identify","y-DEN-tih-fy","पहचानना","Identify your weaknesses and fix them.",2],
+    ["Influence","IN-floo-uns","प्रभाव","Use your influence wisely.",2],
+    ["Inspire","in-SPY-er","प्रेरित करना","Inspire others through your actions.",2],
+    ["Intention","in-TEN-shun","इरादा","Set clear intentions each morning.",2],
+    ["Involve","in-VOLV","शामिल करना","Involve yourself in meaningful work.",2],
+    ["Journey","JUR-nee","यात्रा","Enjoy the journey, not just the destination.",2],
+    ["Judge","JUJ","निर्णय लेना / आंकना","Don't judge a book by its cover.",2],
+    ["Justice","JUS-tis","न्याय","Stand up for justice.",2],
+    ["Leader","LEE-der","नेता","A great leader serves others.",2],
+    ["Limit","LIM-it","सीमा","Push beyond your limits.",2],
+    ["Loyal","LOY-ul","वफ़ादार","Be loyal to your values.",2],
+    ["Manage","MAN-ij","प्रबंधन करना","Manage your time like money.",2],
+    ["Mature","muh-CHOOR","परिपक्व","Think mature, act decisive.",2],
+    ["Mindset","MYND-set","सोच का तरीका","A growth mindset changes everything.",2],
+    ["Motivate","MOH-tih-vayt","प्रेरित करना","Motivate yourself every single day.",2],
+    ["Natural","NACH-er-ul","प्राकृतिक / स्वाभाविक","Be natural, be real.",2],
+    ["Opinion","uh-PIN-yun","राय","Your opinion matters.",2],
+    ["Opportunity","op-er-TYOO-nih-tee","अवसर","Every day brings a new opportunity.",2],
+    ["Overcome","oh-ver-KUM","पार करना","Overcome your fears one by one.",2],
+    ["Patience","PAY-shuns","धैर्य","Patience is a hidden superpower.",2],
+    ["Perform","per-FORM","प्रदर्शन करना","Perform at your best every time.",2],
+    ["Persist","per-SIST","डटे रहना","Persist even when it's hard.",2],
+    ["Positive","POZ-ih-tiv","सकारात्मक","Keep a positive mindset always.",2],
+    ["Prepare","prih-PAIR","तैयारी करना","Prepare before the opportunity arrives.",2],
+    ["Pressure","PRESH-er","दबाव","Turn pressure into performance.",2],
+    ["Priority","pry-OR-ih-tee","प्राथमिकता","Make your health a priority.",2],
+    ["Process","PROS-es","प्रक्रिया","Trust the process.",2],
+    ["Progress","PROG-res","प्रगति","Progress over perfection.",2],
+    ["Purpose","PUR-pus","उद्देश्य","Live with a clear purpose.",2],
+    ["Quality","KWOL-ih-tee","गुणवत्ता","Quality beats quantity always.",2],
+    ["Realistic","ree-uh-LIS-tik","यथार्थवादी","Be realistic but ambitious.",2],
+    ["Reflect","rih-FLEKT","सोचना / विचार करना","Reflect on your day each night.",2],
+    ["Relation","rih-LAY-shun","संबंध","Value your relationships.",2],
+    ["Respect","rih-SPEKT","सम्मान","Earn respect through your actions.",2],
+    ["Responsible","rih-SPON-sih-bul","जिम्मेदार","Be responsible for your choices.",2],
+    ["Result","rih-ZULT","नतीजा","Results don't lie.",2],
+    ["Risk","RISK","जोखिम","Take calculated risks.",2],
+    ["Routine","roo-TEEN","दिनचर्या","Build a powerful morning routine.",2],
+    ["Sacrifice","SAK-rih-fys","बलिदान","Success demands sacrifice.",2],
+    ["Simple","SIM-pul","सरल","Keep your message simple.",2],
+    ["Situation","sich-yoo-AY-shun","परिस्थिति","Handle every situation with grace.",2],
+    ["Skill","SKIL","कौशल","Master one skill at a time.",2],
+    ["Solution","suh-LOO-shun","समाधान","Focus on solutions, not problems.",2],
+    ["Success","suk-SES","सफलता","Success is a series of small wins.",2],
+    ["Support","suh-PORT","समर्थन","Support the people around you.",2],
+    ["Talent","TAL-ent","प्रतिभा","Talent without discipline is wasted.",2],
+    ["Target","TAR-get","लक्ष्य","Set a clear target every week.",2],
+    ["Trust","TRUST","भरोसा","Trust is built through consistency.",2],
+    ["Truth","TROOTH","सच","The truth always wins.",2],
+    ["Value","VAL-yoo","मूल्य","Know your value.",2],
+    ["Vision","VIZH-un","दृष्टि / सोच","Have a clear vision for your future.",2],
+    ["Willing","WIL-ing","तैयार","Be willing to do what others won't.",2],
+    ["Wisdom","WIZ-dum","बुद्धिमत्ता","Wisdom comes from experience and failure.",2],
+  ],
+
+  "Level 3 — Advanced (Power Words)": [
+    ["Abyss","uh-BIS","गहरी खाई / अंधेरा","Staring into the abyss of failure.",3],
+    ["Advocate","AD-vuh-kayt","समर्थन करना / वकालत","Advocate for what you believe in.",3],
+    ["Aesthetic","es-THET-ik","कलात्मक सुंदरता","Anível Culture has a dark luxury aesthetic.",3],
+    ["Affluent","AF-loo-ent","संपन्न / अमीर","Build an affluent mindset first.",3],
+    ["Agile","AJ-ul","फुर्तीला / लचीला","Stay agile in a changing world.",3],
+    ["Allegiance","uh-LEE-juns","वफ़ादारी","Your allegiance should be to your values.",3],
+    ["Ambiguous","am-BIG-yoo-us","अस्पष्ट","Avoid ambiguous communication.",3],
+    ["Amplify","AM-plih-fy","बढ़ाना / तेज़ करना","Amplify your strengths.",3],
+    ["Antagonist","an-TAG-uh-nist","विरोधी","Every hero has an antagonist.",3],
+    ["Articulate","ar-TIK-yuh-lit","स्पष्ट बोलने वाला","Be articulate in every conversation.",3],
+    ["Ascend","uh-SEND","ऊपर उठना","Ascend beyond your current limitations.",3],
+    ["Assert","uh-SURT","दृढ़ता से कहना","Assert your position clearly.",3],
+    ["Astute","uh-STOOT","चतुर / होशियार","An astute investor sees trends early.",3],
+    ["Autonomy","aw-TON-uh-mee","स्वतंत्रता / आत्म-नियंत्रण","Work that gives you autonomy is powerful.",3],
+    ["Benchmark","BENCH-mark","मानक / तुलना बिंदु","Set a benchmark for others to follow.",3],
+    ["Bias","BY-us","पक्षपात","Overcome your unconscious bias.",3],
+    ["Brevity","BREV-ih-tee","संक्षिप्तता","Brevity is the soul of wit.",3],
+    ["Catalyst","KAT-uh-list","उत्प्रेरक / बदलाव लाने वाला","Be the catalyst for change.",3],
+    ["Charisma","kuh-RIZ-muh","आकर्षण / करिश्मा","Charisma opens every door.",3],
+    ["Coherent","koh-HEER-ent","सुसंगत / स्पष्ट","Make a coherent argument.",3],
+    ["Collaboration","kuh-lab-uh-RAY-shun","सहयोग","Great things come from collaboration.",3],
+    ["Competence","KOM-pih-tuns","योग्यता","Competence earns credibility.",3],
+    ["Complacent","kum-PLAY-sunt","आत्मसंतुष्ट (बुरे अर्थ में)","Never become complacent with success.",3],
+    ["Concise","kun-SYS","संक्षिप्त","Be concise, not vague.",3],
+    ["Conquer","KONG-ker","जीतना / फतह करना","Conquer your inner demons first.",3],
+    ["Conviction","kun-VIK-shun","दृढ़ विश्वास","Speak with conviction.",3],
+    ["Credibility","kred-ih-BIL-ih-tee","विश्वसनीयता","Your brand's credibility is everything.",3],
+    ["Criterion","kry-TEER-ee-un","मानदंड","Set a high criterion for your work.",3],
+    ["Cultivate","KUL-tih-vayt","विकसित करना","Cultivate deep relationships.",3],
+    ["Cunning","KUN-ing","चालाक / धूर्त","Use cunning strategy, not brute force.",3],
+    ["Daunting","DAWN-ting","भयावह / डरावना","The task seemed daunting at first.",3],
+    ["Decisive","dih-SY-siv","निर्णायक","Be decisive in critical moments.",3],
+    ["Deflect","dih-FLEKT","टालना / मोड़ना","Don't deflect accountability.",3],
+    ["Deliberate","dih-LIB-er-it","जानबूझकर / सोचा समझा","Make deliberate choices.",3],
+    ["Demeanor","dih-MEE-ner","व्यवहार / तौर-तरीका","Maintain a calm demeanor.",3],
+    ["Diligence","DIL-ih-juns","मेहनत / परिश्रम","Diligence separates winners from losers.",3],
+    ["Disrupt","dis-RUPT","बाधित करना / क्रांति लाना","Disrupt the market with your ideas.",3],
+    ["Diverge","dy-VURJ","अलग दिशा में जाना","Dare to diverge from the crowd.",3],
+    ["Domineering","dom-ih-NEER-ing","दबदबा रखने वाला","Don't be domineering, be commanding.",3],
+    ["Elevate","EL-ih-vayt","ऊपर उठाना","Elevate everyone around you.",3],
+    ["Eloquent","EL-uh-kwunt","प्रभावशाली बोलने वाला","Be eloquent in your pitch.",3],
+    ["Emerge","ih-MURJ","उभरना","Emerge stronger from every challenge.",3],
+    ["Empathy","EM-puh-thee","सहानुभूति","Empathy is a leader's greatest weapon.",3],
+    ["Empower","em-POW-er","सशक्त करना","Empower the people around you.",3],
+    ["Endure","en-DYOOR","सहना / टिके रहना","Endure the grind to enjoy the glory.",3],
+    ["Enigma","ih-NIG-muh","रहस्य","He remained an enigma to everyone.",3],
+    ["Enthrall","en-THRAWL","मंत्रमुग्ध करना","Her story enthralled the entire room.",3],
+    ["Euphoria","yoo-FOR-ee-uh","अत्यधिक खुशी","Success brings a wave of euphoria.",3],
+    ["Execute","EK-suh-kyoot","अमल में लाना","Executing ideas is what separates winners.",3],
+    ["Exude","eg-ZYOOD","झलकाना","Exude confidence in every room.",3],
+    ["Fierce","FEERS","उग्र / कड़ा","Be fierce in your pursuit.",3],
+    ["Flourish","FLUR-ish","फलना-फूलना","Flourish in your chosen field.",3],
+    ["Formidable","FOR-mid-uh-bul","दुर्जेय / बहुत शक्तिशाली","Build a formidable personal brand.",3],
+    ["Forthright","FORTH-ryt","सीधा-सादा / बेबाक","Be forthright with your intentions.",3],
+    ["Franchise","FRAN-chyz","फ्रेंचाइज़ / ब्रांड साम्राज्य","Marvel is the biggest franchise ever.",3],
+    ["Frugal","FROO-gul","मितव्ययी","Be frugal with your time.",3],
+    ["Fundamental","fun-duh-MEN-tul","बुनियादी","Master the fundamentals first.",3],
+    ["Grind","GRYND","लगातार काम करना","Trust the grind.",3],
+    ["Gravitate","GRAV-ih-tayt","आकर्षित होना","People gravitate toward confident leaders.",3],
+    ["Hierarchy","HY-er-ar-kee","पदानुक्रम","Understand the hierarchy of priorities.",3],
+    ["Ideology","y-dee-OL-uh-jee","विचारधारा","Build a brand with a strong ideology.",3],
+    ["Immense","ih-MENS","विशाल / बहुत बड़ा","The potential is immense.",3],
+    ["Impact","IM-pakt","प्रभाव","Create a meaningful impact.",3],
+    ["Inevitable","in-EV-ih-tuh-bul","अनिवार्य / जो रोका न जाए","Success is inevitable with consistency.",3],
+    ["Innovative","IN-uh-vay-tiv","नवाचारी","Think in innovative ways.",3],
+    ["Integrity","in-TEG-rih-tee","ईमानदारी / सत्यनिष्ठा","Integrity is your real brand.",3],
+    ["Intense","in-TENS","तीव्र","Stay intense in your focus.",3],
+    ["Intrinsic","in-TRIN-sik","आंतरिक / स्वाभाविक","Find intrinsic motivation, not just external.",3],
+    ["Irreversible","ir-ih-VUR-sih-bul","जो वापस न हो सके","Some decisions are irreversible.",3],
+    ["Legacy","LEG-uh-see","विरासत","What legacy will you leave?",3],
+    ["Leverage","LEV-er-ij","लाभ उठाना","Leverage your network wisely.",3],
+    ["Lucrative","LOO-kruh-tiv","लाभदायक","Build a lucrative business model.",3],
+    ["Magnitude","MAG-nih-tyood","परिमाण / बड़ाई","Understand the magnitude of your choice.",3],
+    ["Mentality","men-TAL-ih-tee","मानसिकता","Develop a winner's mentality.",3],
+    ["Methodical","muh-THOD-ih-kul","व्यवस्थित","Be methodical in your approach.",3],
+    ["Monopoly","muh-NOP-uh-lee","एकाधिकार","Amazon has a monopoly on e-commerce.",3],
+    ["Monumental","mon-yoo-MEN-tul","विशाल / ऐतिहासिक","This is a monumental decision.",3],
+    ["Narrative","NAIR-uh-tiv","कहानी / विवरण","Control your own narrative.",3],
+    ["Niche","NEESH","विशेष क्षेत्र","Dominate your niche.",3],
+    ["Obsess","ub-SES","जुनून होना","Obsess over quality.",3],
+    ["Optimal","OP-tih-mul","सर्वोत्तम","Find the optimal path forward.",3],
+    ["Outperform","owt-per-FORM","बेहतर प्रदर्शन करना","Outperform your past self every day.",3],
+    ["Paradox","PAIR-uh-doks","विरोधाभास","The paradox of success is more pressure.",3],
+    ["Paramount","PAIR-uh-mownt","सर्वोच्च / सबसे महत्त्वपूर्ण","Your mental health is paramount.",3],
+    ["Persevere","pur-suh-VEER","दृढ़ता से जारी रखना","Persevere when everything says quit.",3],
+    ["Phenomenal","fih-NOM-ih-nul","असाधारण","You are phenomenal.",3],
+    ["Pinnacle","PIN-uh-kul","शिखर","Reach the pinnacle of your industry.",3],
+    ["Pivotal","PIV-uh-tul","निर्णायक / महत्त्वपूर्ण","This is a pivotal moment.",3],
+    ["Potential","puh-TEN-shul","क्षमता / संभावना","Your potential is limitless.",3],
+    ["Precision","prih-SIZH-un","सटीकता","Execute with precision.",3],
+    ["Proactive","proh-AK-tiv","पहले से सोचने वाला","Be proactive, not reactive.",3],
+    ["Profound","pruh-FOWND","गहरा / अत्यधिक","This has a profound impact.",3],
+    ["Proliferate","pruh-LIF-er-ayt","तेज़ी से फैलना","Great ideas proliferate quickly.",3],
+    ["Prototype","PROH-tuh-typ","प्रारंभिक नमूना","Build a prototype before launching.",3],
+    ["Prudent","PROO-dent","विवेकशील","Make prudent financial decisions.",3],
+    ["Quantify","KWON-tih-fy","मात्रा निर्धारित करना","Quantify your results.",3],
+    ["Radical","RAD-ih-kul","कट्टर / क्रांतिकारी","Take radical ownership.",3],
+    ["Recalibrate","ree-KAL-ih-brayt","पुनः समायोजित करना","Recalibrate your strategy quarterly.",3],
+    ["Relentless","rih-LENT-les","अथक / बेरहम","Be relentless in your pursuit.",3],
+    ["Resilience","rih-ZIL-ee-uns","मुसीबत में टिके रहने की क्षमता","Resilience is the key to survival.",3],
+    ["Revenue","REV-uh-nyoo","आय / राजस्व","Track your revenue every month.",3],
+    ["Rigorous","RIG-er-us","कठोर / सख्त","Rigorous practice creates champions.",3],
+    ["Ruthless","ROOTH-les","निर्दयी / बेरहम","Be ruthless with your time.",3],
+    ["Scalable","SKAY-luh-bul","जो बढ़ाया जा सके","Build a scalable business model.",3],
+    ["Scarce","SKAIRS","दुर्लभ","Truly great talent is scarce.",3],
+    ["Serenity","suh-REN-ih-tee","शांति","Find serenity in the chaos.",3],
+    ["Shrewd","SHROOD","चतुर / कुशल","Be shrewd in negotiations.",3],
+    ["Significant","sig-NIF-ih-kunt","महत्त्वपूर्ण","Every small win is significant.",3],
+    ["Solidarity","sol-ih-DAIR-ih-tee","एकजुटता","Show solidarity with your team.",3],
+    ["Sophisticated","suh-FIS-tih-kay-tid","परिष्कृत","Develop sophisticated taste.",3],
+    ["Sovereign","SOV-er-in","स्वायत्त / राजा सा","Build a sovereign personal brand.",3],
+    ["Speculate","SPEK-yuh-layt","अनुमान लगाना","Don't speculate, analyze data.",3],
+    ["Stamina","STAM-ih-nuh","सहनशक्ति","Build mental and physical stamina.",3],
+    ["Steadfast","STED-fast","दृढ़ / अटल","Stay steadfast in your vision.",3],
+    ["Strategic","struh-TEE-jik","रणनीतिक","Think strategic, act decisive.",3],
+    ["Subtle","SUT-ul","बारीक / हल्का","The most powerful moves are subtle.",3],
+    ["Surge","SURJ","अचानक बढ़ना","A surge of energy hit the crowd.",3],
+    ["Sustain","suh-STAYN","बनाए रखना","Sustain your growth long-term.",3],
+    ["Tenacious","tuh-NAY-shus","दृढ़निश्चयी","Be tenacious in your goals.",3],
+    ["Transcend","tran-SEND","पार करना / ऊपर उठना","Transcend your limitations.",3],
+    ["Transparent","trans-PAIR-unt","पारदर्शी","Be transparent with your audience.",3],
+    ["Triumph","TRY-umf","जीत / विजय","Triumph over every obstacle.",3],
+    ["Unconventional","un-kun-VEN-shun-ul","अपरंपरागत","Take unconventional paths to success.",3],
+    ["Unrelenting","un-rih-LEN-ting","बिना रुके / अथक","Unrelenting effort creates legends.",3],
+    ["Validate","VAL-ih-dayt","पुष्टि करना","Validate your business idea first.",3],
+    ["Versatile","VUR-suh-tul","बहुमुखी","Be versatile in your skill set.",3],
+    ["Vigilant","VIJ-ih-lunt","सतर्क","Stay vigilant for new opportunities.",3],
+    ["Volatile","VOL-uh-til","अस्थिर / बदलने वाला","Markets can be volatile.",3],
+    ["Vulnerable","VUL-ner-uh-bul","कमज़ोर / असुरक्षित","Being vulnerable takes real courage.",3],
+    ["Zeal","ZEEL","जोश / उत्साह","Approach your work with zeal.",3],
+  ],
+
+  "Level 4 — Expert (Rare & Unique Words — People Won't Know)": [
+    ["Abstruse","ab-STROOS","अत्यंत जटिल","The theory was too abstruse for most.",4],
+    ["Acumen","AK-yuh-men","तीव्र बुद्धि","His business acumen is unmatched.",4],
+    ["Aegis","EE-jis","संरक्षण / छत्र","Under the aegis of a great mentor.",4],
+    ["Alacrity","uh-LAK-rih-tee","फुर्ती से उत्साह","He accepted the challenge with alacrity.",4],
+    ["Anachronism","uh-NAK-ruh-niz-um","कालभ्रम / पुरानी सोच","Thinking that way is an anachronism now.",4],
+    ["Antipathy","an-TIP-uh-thee","घृणा / विरोध","He felt a deep antipathy toward mediocrity.",4],
+    ["Apocryphal","uh-POK-rih-ful","संदिग्ध / अप्रमाणित","The story is likely apocryphal.",4],
+    ["Apotheosis","uh-poth-ee-OH-sis","चरम बिंदु / देवत्व","That speech was the apotheosis of his career.",4],
+    ["Apparition","ap-uh-RISH-un","आत्मा / भूत का दर्शन","He appeared like an apparition from the past.",4],
+    ["Arcane","ar-KAYN","रहस्यमय / गुप्त","He knew arcane techniques others never learned.",4],
+    ["Arduous","AR-joo-us","कठिन / थकाने वाला","The climb was arduous but worth it.",4],
+    ["Assiduous","uh-SIJ-oo-us","अत्यंत परिश्रमी","Assiduous work always pays off.",4],
+    ["Audacious","aw-DAY-shus","दुस्साहसी / साहसी","Have audacious goals.",4],
+    ["Augment","awg-MENT","बढ़ाना / वृद्धि करना","Augment your income with side projects.",4],
+    ["Axiom","AK-see-um","स्वयंसिद्ध सत्य","Hard work pays off — that's an axiom.",4],
+    ["Baroque","buh-ROHK","अत्यलंकृत / बहुत सजाया हुआ","His style was baroque and over the top.",4],
+    ["Bellicose","BEL-ih-kohs","लड़ाकू / झगड़ालू","Avoid bellicose behavior in business.",4],
+    ["Bespoke","bih-SPOHK","खास बनाया हुआ","Anível offers bespoke pop culture apparel.",4],
+    ["Cacophony","kuh-KOF-uh-nee","शोर-गुल / कर्कशता","Cut through the cacophony with clarity.",4],
+    ["Capricious","kuh-PRISH-us","मनमौजी / अस्थिर","Don't make capricious decisions.",4],
+    ["Categorical","kat-uh-GOR-ih-kul","स्पष्ट / निर्विवाद","Give a categorical answer.",4],
+    ["Clandestine","klan-DES-tin","गुप्त","The clandestine project was finally revealed.",4],
+    ["Cogent","KOH-junt","ठोस / प्रभावशाली","Make a cogent case for your idea.",4],
+    ["Colloquial","kuh-LOH-kwee-ul","बोलचाल का","Use colloquial language to connect better.",4],
+    ["Condescending","kon-dih-SEN-ding","घमंडी / तुच्छ मानने वाला","Never be condescending to your audience.",4],
+    ["Confluence","KON-floo-uns","संगम / मिलन","Pop culture is a confluence of all arts.",4],
+    ["Connotation","kon-uh-TAY-shun","अर्थ का भाव","Words carry hidden connotations.",4],
+    ["Consternation","kon-ster-NAY-shun","घबराहट / परेशानी","The news caused consternation.",4],
+    ["Contemplate","KON-tem-playt","गहराई से सोचना","Contemplate your next big move.",4],
+    ["Contentious","kun-TEN-shus","विवादास्पद","That is a contentious topic.",4],
+    ["Contrarian","kun-TRAIR-ee-un","विपरीत सोच रखने वाला","Great investors are contrarians.",4],
+    ["Corroborate","kuh-ROB-uh-rayt","पुष्टि करना","Corroborate your claims with data.",4],
+    ["Cynicism","SIN-ih-siz-um","निराशावाद / संदेहवाद","Don't let cynicism kill your dreams.",4],
+    ["Debacle","dih-BAH-kul","पूर्ण विफलता / तबाही","Avoid a total debacle by planning ahead.",4],
+    ["Deft","DEFT","कुशल / चतुर","He was deft at handling criticism.",4],
+    ["Defunct","dih-FUNGT","बंद हो चुका / निष्क्रिय","That strategy is now defunct.",4],
+    ["Delineate","dih-LIN-ee-ayt","स्पष्ट रूप से बताना","Delineate your brand's vision clearly.",4],
+    ["Demagogue","DEM-uh-gog","जनता को भड़काने वाला नेता","Beware of the demagogue's false promises.",4],
+    ["Denigrate","DEN-ih-grayt","बदनाम करना","Never denigrate your competitors.",4],
+    ["Derivative","dih-RIV-uh-tiv","नकल / दूसरे से लिया हुआ","Don't create derivative content.",4],
+    ["Dexterous","DEK-ster-us","कुशल / फुर्तीला","He was dexterous with words.",4],
+    ["Dichotomy","dy-KOT-uh-mee","विभाजन / दो विपरीत बातें","The dichotomy between rich and poor is growing.",4],
+    ["Diffident","DIF-ih-dunt","शर्मीला / आत्मविश्वास की कमी","Don't be diffident in presentations.",4],
+    ["Discernment","dih-SURN-ment","विवेक / परख","Great leaders show strong discernment.",4],
+    ["Dissonance","DIS-uh-nuns","असंगति / विरोधाभास","Cognitive dissonance holds people back.",4],
+    ["Dogma","DOG-muh","हठधर्मिता / कट्टर मान्यता","Question every dogma.",4],
+    ["Duplicity","doo-PLIS-ih-tee","दोहरापन / धोखा","Duplicity destroys trust instantly.",4],
+    ["Ebullient","ih-BUL-yunt","अत्यंत उत्साही","Stay ebullient even on hard days.",4],
+    ["Efficacious","ef-ih-KAY-shus","प्रभावी / कारगर","Find the most efficacious path.",4],
+    ["Effrontery","ih-FRUN-ter-ee","ढिठाई / बेशर्मी","He had the effrontery to demand a raise after failing.",4],
+    ["Egalitarian","ih-gal-ih-TAIR-ee-un","समानतावादी","Build an egalitarian culture.",4],
+    ["Elusive","ih-LOO-siv","मायावी / मुश्किल से पाने वाला","True success is elusive but real.",4],
+    ["Eminent","EM-ih-nunt","प्रतिष्ठित / प्रमुख","He became an eminent figure in tech.",4],
+    ["Empirical","em-PIR-ih-kul","प्रयोगसिद्ध / डेटा-आधारित","Use empirical data to make decisions.",4],
+    ["Ephemeral","ih-FEM-er-ul","क्षणभंगुर / अस्थायी","Social media fame is ephemeral.",4],
+    ["Equanimity","ee-kwuh-NIM-ih-tee","मानसिक स्थिरता","Face hardship with equanimity.",4],
+    ["Esoteric","es-uh-TER-ik","गूढ़ / रहस्यमय","He had esoteric knowledge most lacked.",4],
+    ["Evanescent","ev-uh-NES-unt","जल्दी लुप्त होने वाला","Trends are evanescent; values are not.",4],
+    ["Exacerbate","eg-ZAS-er-bayt","और बिगाड़ना","Don't exacerbate the problem.",4],
+    ["Expedient","ek-SPEE-dee-unt","सुविधाजनक / उचित","Choose the expedient solution.",4],
+    ["Explicit","ek-SPLIS-it","स्पष्ट / खुला","Be explicit in your instructions.",4],
+    ["Extol","ek-STOHL","प्रशंसा करना","Extol the virtues of discipline.",4],
+    ["Fallacious","fuh-LAY-shus","भ्रामक / गलत","That argument is completely fallacious.",4],
+    ["Fastidious","fas-TID-ee-us","बारीकी पर ध्यान देने वाला","He was fastidious about design quality.",4],
+    ["Fatuous","FACH-oo-us","मूर्खतापूर्ण","Don't make fatuous decisions.",4],
+    ["Ferocious","fuh-ROH-shus","बेहद उग्र / क्रूर","Ferocious effort creates extraordinary results.",4],
+    ["Fervent","FUR-vunt","जोशीला / उत्कट","He was a fervent believer in his vision.",4],
+    ["Fidelity","fih-DEL-ih-tee","वफ़ादारी / सटीकता","Show fidelity to your brand values.",4],
+    ["Flagrant","FLAY-grunt","खुला / निर्लज्ज","That was a flagrant violation of trust.",4],
+    ["Fortitude","FOR-tih-tyood","साहस / मनोबल","Fortitude separates champions from the rest.",4],
+    ["Fractious","FRAK-shus","झगड़ालू / अड़ियल","Don't be fractious in debates.",4],
+    ["Garrulous","GAIR-uh-lus","बहुत बातूनी","Don't be garrulous — be precise.",4],
+    ["Grandiloquent","gran-DIL-uh-kwunt","आडंबरी भाषा","Avoid grandiloquent speeches.",4],
+    ["Gratuitous","gruh-TYOO-ih-tus","अनावश्यक","Remove all gratuitous content.",4],
+    ["Hegemony","hih-JEM-uh-nee","वर्चस्व","Build hegemony in your niche.",4],
+    ["Hubris","HYOO-bris","अहंकार / दंभ","Hubris destroys even the greatest empires.",4],
+    ["Hyperbole","hy-PUR-buh-lee","अतिशयोक्ति","Marketing often relies on hyperbole.",4],
+    ["Iconoclast","y-KON-uh-klast","परंपराओं को तोड़ने वाला","Elon Musk is a true iconoclast.",4],
+    ["Idiosyncratic","id-ee-oh-sin-KRAT-ik","अपनी विशेष शैली वाला","His idiosyncratic style is unforgettable.",4],
+    ["Ignominious","ig-nuh-MIN-ee-us","शर्मनाक / कलंकित","An ignominious defeat teaches the most.",4],
+    ["Immutable","ih-MYOO-tuh-bul","अपरिवर्तनीय","Some truths are immutable.",4],
+    ["Imperious","im-PEER-ee-us","अहंकारी / तानाशाह जैसा","Don't lead with an imperious attitude.",4],
+    ["Impervious","im-PUR-vee-us","अप्रभावित / अभेद्य","Stay impervious to negativity.",4],
+    ["Implacable","im-PLAK-uh-bul","अटल / अक्षमनीय","Be implacable in your standards.",4],
+    ["Incisive","in-SY-siv","तीखा / सटीक","Give incisive feedback.",4],
+    ["Incognito","in-kog-NEE-toh","भेष बदलकर / गुप्त रूप से","He traveled incognito.",4],
+    ["Indefatigable","in-dih-FAT-ih-guh-bul","अथक / अनवरत","Be indefatigable in your mission.",4],
+    ["Indolent","IN-duh-lunt","आलसी","Never be indolent about your dreams.",4],
+    ["Ineffable","in-EF-uh-bul","जो शब्दों में न कहा जा सके","The feeling of success is ineffable.",4],
+    ["Inexorable","in-EK-ser-uh-bul","अटल / जो बदला न जा सके","The inexorable march of time stops for no one.",4],
+    ["Insidious","in-SID-ee-us","धीरे-धीरे हानिकारक","Procrastination is insidious.",4],
+    ["Insolent","IN-suh-lunt","अहंकारी / उद्दंड","Don't be insolent in criticism.",4],
+    ["Intrepid","in-TREP-id","निडर / साहसी","Be intrepid in your journey.",4],
+    ["Inveterate","in-VET-er-it","पुराना / जो आदत बन गई हो","He was an inveterate reader.",4],
+    ["Irrefutable","ir-ih-FYOO-tuh-bul","जिसे नकारा न जा सके","The data is irrefutable.",4],
+    ["Juggernaut","JUG-er-nawt","बहुत शक्तिशाली शक्ति","Marvel Studios is a juggernaut.",4],
+    ["Juxtapose","JUK-stuh-pohz","साथ रखकर तुलना करना","Juxtapose your old self with the new.",4],
+    ["Labyrinthine","lab-ih-RIN-thin","पेचीदा / भूलभुलैया जैसा","Navigate the labyrinthine world of business.",4],
+    ["Laconic","luh-KON-ik","कम शब्दों में बात करने वाला","Be laconic but impactful.",4],
+    ["Lampoon","lam-POON","व्यंग्य करना / मज़ाक उड़ाना","Never lampoon your competitors publicly.",4],
+    ["Lethargic","luh-THAR-jik","सुस्त / आलसी","Don't be lethargic about your goals.",4],
+    ["Loquacious","loh-KWAY-shus","बहुत बातूनी","Don't be loquacious in pitches.",4],
+    ["Luminous","LOO-mih-nus","चमकदार / प्रतिभाशाली","His mind was luminous.",4],
+    ["Magnanimous","mag-NAN-ih-mus","उदार / बड़े दिल वाला","Be magnanimous in victory.",4],
+    ["Malfeasance","mal-FEE-zuns","कदाचार / अनुचित कार्य","Never engage in any malfeasance.",4],
+    ["Malleable","MAL-ee-uh-bul","लचीला / बदलने योग्य","Keep your strategy malleable.",4],
+    ["Maverick","MAV-er-ik","नियमों को न मानने वाला","Be a maverick in your industry.",4],
+    ["Mendacious","men-DAY-shus","झूठा / धोखेबाज़","Avoid mendacious marketing.",4],
+    ["Meticulous","mih-TIK-yuh-lus","अत्यंत सावधान / बारीकी से","Be meticulous in your execution.",4],
+    ["Misanthrope","MIS-un-throhp","मनुष्यों से नफ़रत करने वाला","Don't become a misanthrope after failure.",4],
+    ["Mitigate","MIT-ih-gayt","कम करना / हल्का करना","Mitigate risk with preparation.",4],
+    ["Moribund","MOR-ih-bund","मृतप्राय / लगभग बंद","That business model is moribund.",4],
+    ["Munificent","myoo-NIF-ih-sunt","बहुत उदार / दानी","Be munificent with your knowledge.",4],
+    ["Myopic","my-OP-ik","संकुचित सोच / दूरदर्शिता की कमी","Don't be myopic about your goals.",4],
+    ["Nebulous","NEB-yuh-lus","अस्पष्ट / धुंधला","Your plan is too nebulous.",4],
+    ["Nefarious","nih-FAIR-ee-us","बहुत बुरा / दुष्ट","Avoid nefarious business practices.",4],
+    ["Nihilism","NY-ih-liz-um","निराशावाद / कुछ नहीं मानना","Nihilism is the enemy of ambition.",4],
+    ["Nomenclature","NOH-men-klay-cher","नामकरण / शब्दावली","Learn the nomenclature of your industry.",4],
+    ["Nonchalant","non-shuh-LAHNT","बेपरवाह / शांत","Stay nonchalant under pressure.",4],
+    ["Nuance","NYOO-ahns","सूक्ष्म अंतर","Understand the nuance of your audience.",4],
+    ["Obdurate","OB-dyoo-rit","हठी / ज़िद्दी","Don't be obdurate when feedback is right.",4],
+    ["Obsequious","ub-SEE-kwee-us","चापलूस / चाटुकारिता करने वाला","Never be obsequious to get ahead.",4],
+    ["Obstinate","OB-stih-nit","ज़िद्दी / हठी","Be resilient, not obstinate.",4],
+    ["Omnipotent","om-NIP-uh-tent","सर्वशक्तिमान","No one is omnipotent.",4],
+    ["Omniscient","om-NISH-unt","सर्वज्ञ","Stay humble — no one is omniscient.",4],
+    ["Onerous","OH-ner-us","भारी / बोझिल","The task was onerous but necessary.",4],
+    ["Opulent","OP-yuh-lunt","वैभवशाली / समृद्ध","Build an opulent brand identity.",4],
+    ["Ostentatious","os-ten-TAY-shus","दिखावटी / आडंबरपूर्ण","Don't be ostentatious about your success.",4],
+    ["Paradigm","PAIR-uh-dym","आदर्श नमूना / सोचने का तरीका","Shift your paradigm completely.",4],
+    ["Paragon","PAIR-uh-gon","आदर्श व्यक्ति / श्रेष्ठ उदाहरण","Be a paragon of your craft.",4],
+    ["Pernicious","per-NISH-us","हानिकारक / विनाशकारी","Pernicious habits destroy great potential.",4],
+    ["Perspicacious","pur-spih-KAY-shus","तेज़ बुद्धि वाला","Be perspicacious in reading situations.",4],
+    ["Pertinacious","pur-tih-NAY-shus","दृढ़ / ज़िद से काम करने वाला","Be pertinacious in achieving your goals.",4],
+    ["Phlegmatic","fleg-MAT-ik","शांत / अविचलित","A phlegmatic leader never panics.",4],
+    ["Plausible","PLAW-zih-bul","संभव / विश्वसनीय","Make your plan plausible.",4],
+    ["Polemic","puh-LEM-ik","विवादास्पद बहस / तर्क","He was known for sharp polemics.",4],
+    ["Pontificate","pon-TIF-ih-kayt","ज्ञान बघारना","Don't pontificate — demonstrate.",4],
+    ["Posterity","pos-TER-ih-tee","आने वाली पीढ़ियाँ","Build something worthy for posterity.",4],
+    ["Pragmatic","prag-MAT-ik","व्यावहारिक","Be pragmatic, not idealistic.",4],
+    ["Precipice","PRES-ih-pis","कगार / खाई","You are standing at the precipice of success.",4],
+    ["Precocious","prih-KOH-shus","बचपन से ही प्रतिभाशाली","He was a precocious entrepreneur.",4],
+    ["Preeminent","pree-EM-ih-nunt","सर्वश्रेष्ठ","Become preeminent in your field.",4],
+    ["Prescient","PRESH-unt","भविष्य जानने वाला","Great investors are prescient.",4],
+    ["Pretentious","prih-TEN-shus","दिखावटी","Never be pretentious.",4],
+    ["Primordial","pry-MOR-dee-ul","आदिम / मूल","Tap into primordial human emotions.",4],
+    ["Prodigious","pruh-DIJ-us","असाधारण / विलक्षण","He had a prodigious work ethic.",4],
+    ["Profligate","PROF-lih-git","फ़िज़ूलखर्च / अपव्ययी","Don't be profligate with resources.",4],
+    ["Propitious","pruh-PISH-us","शुभ / अनुकूल","This is a propitious time to launch.",4],
+    ["Prosaic","proh-ZAY-ik","सांसारिक / साधारण","Avoid prosaic content.",4],
+    ["Prowess","PROW-us","कुशलता / शक्ति","Show your creative prowess.",4],
+    ["Pugnacious","pug-NAY-shus","लड़ाकू / जुझारू","Channelise pugnacious energy into work.",4],
+    ["Querulous","KWER-uh-lus","शिकायती / रोने वाला","Avoid being querulous about results.",4],
+    ["Quixotic","kwik-SOT-ik","अव्यावहारिक स्वप्नद्रष्टा","Don't be quixotic — be strategic.",4],
+    ["Rapacious","ruh-PAY-shus","लालची / हड़पने वाला","Avoid rapacious business tactics.",4],
+    ["Ratiocinate","rash-ee-OS-ih-nayt","तर्कपूर्वक सोचना","Learn to ratiocinate under pressure.",4],
+    ["Recalcitrant","rih-KAL-sih-trant","अड़ियल / असहयोगी","Deal with recalcitrant team members directly.",4],
+    ["Redoubtable","rih-DOW-tuh-bul","दुर्जेय / सम्मानजनक","Build a redoubtable reputation.",4],
+    ["Refractory","rih-FRAK-ter-ee","अड़ियल / जिद्दी","Stay patient with refractory problems.",4],
+    ["Repudiate","rih-PYOO-dee-ayt","अस्वीकार करना / नकारना","Repudiate bad advice boldly.",4],
+    ["Reticent","RET-ih-sunt","चुप्पी रखने वाला","Don't be reticent when speaking up matters.",4],
+    ["Sagacious","suh-GAY-shus","बुद्धिमान / चतुर","A sagacious investor reads between the lines.",4],
+    ["Salient","SAY-lee-unt","महत्त्वपूर्ण / उभरा हुआ","Highlight the salient points.",4],
+    ["Sanctimonious","sangk-tih-MOH-nee-us","ढोंगी / नैतिकता का नाटक करने वाला","Don't be sanctimonious.",4],
+    ["Sanguine","SANG-gwin","आशावादी","Stay sanguine about the future.",4],
+    ["Sardonic","sar-DON-ik","कटु व्यंग्यपूर्ण","His sardonic humor kept people on edge.",4],
+    ["Sartorial","sar-TOR-ee-ul","पहनावे से संबंधित","Develop your sartorial sense.",4],
+    ["Scrupulous","SKROO-pyuh-lus","ईमानदार / सचेत","Be scrupulous in your dealings.",4],
+    ["Sempiternal","sem-pih-TUR-nul","शाश्वत / अनंत","Build a sempiternal legacy.",4],
+    ["Serendipity","ser-un-DIP-ih-tee","अचानक अच्छी बात होना","Great ideas come through serendipity.",4],
+    ["Sycophant","SIK-uh-funt","चापलूस","Surround yourself with truth-tellers, not sycophants.",4],
+    ["Taciturn","TAS-ih-turn","कम बोलने वाला","A taciturn leader speaks with impact.",4],
+    ["Tenuous","TEN-yoo-us","कमज़ोर / नाज़ुक","The connection was tenuous at best.",4],
+    ["Timorous","TIM-er-us","डरपोक / कायर","Don't be timorous about big decisions.",4],
+    ["Torpid","TOR-pid","सुस्त / निष्क्रिय","Never allow your ambition to become torpid.",4],
+    ["Tractable","TRAK-tuh-bul","सहयोगी / आसानी से समझाने योग्य","A tractable team moves fast.",4],
+    ["Truculent","TRUK-yuh-lunt","आक्रामक / लड़ाकू","Don't be truculent in negotiations.",4],
+    ["Ubiquitous","yoo-BIK-wih-tus","हर जगह मौजूद","Smartphones are ubiquitous today.",4],
+    ["Umbrage","UM-brij","नाराज़गी / अपमान","Don't take umbrage at honest feedback.",4],
+    ["Unctuous","UNK-choo-us","चिकनी-चुपड़ी बात करने वाला","Beware of unctuous flattery.",4],
+    ["Undaunted","un-DAWN-tid","निडर / अडिग","Remain undaunted by rejection.",4],
+    ["Unequivocal","un-ih-KWIV-uh-kul","स्पष्ट / निश्चित","Give an unequivocal answer.",4],
+    ["Unfathomable","un-FATH-um-uh-bul","अथाह / समझ से परे","The universe is unfathomable.",4],
+    ["Unimpeachable","un-im-PEECH-uh-bul","निर्दोष / अखंडनीय","Build an unimpeachable reputation.",4],
+    ["Untenable","un-TEN-uh-bul","जिसे बचाया न जा सके","That position is untenable.",4],
+    ["Unwavering","un-WAY-ver-ing","अडिग / दृढ़","Stay unwavering in your mission.",4],
+    ["Vacuous","VAK-yoo-us","खाली / बेमतलब","Avoid vacuous conversations.",4],
+    ["Vehement","VEE-uh-munt","जोरदार / उत्कट","Make a vehement case for your vision.",4],
+    ["Venal","VEE-nul","पैसों से खरीदा जा सकने वाला","Don't become venal in pursuit of wealth.",4],
+    ["Venerate","VEN-er-ayt","सम्मान करना / पूजना","Venerate those who came before you.",4],
+    ["Veracity","vuh-RAS-ih-tee","सच्चाई","Always speak with veracity.",4],
+    ["Verbose","vur-BOHS","ज़्यादा बोलने वाला","Don't be verbose — be impactful.",4],
+    ["Vicarious","vy-KAIR-ee-us","दूसरे के ज़रिए अनुभव करना","Live a vicarious life through books.",4],
+    ["Vile","VYL","घृणित / नीच","Never stoop to vile tactics.",4],
+    ["Vindicate","VIN-dih-kayt","सही साबित करना","Your results will vindicate your efforts.",4],
+    ["Vitriolic","vit-ree-OL-ik","कटु / ज़हरीला","Avoid vitriolic criticism.",4],
+    ["Vociferous","voh-SIF-er-us","जोर से बोलने वाला","Be vociferous about your values.",4],
+    ["Voracious","vuh-RAY-shus","लालची / बहुत भूखा","Be voracious in your hunger for knowledge.",4],
+    ["Whimsical","WIM-zih-kul","सनकी / मज़ेदार","Add a whimsical touch to your brand.",4],
+    ["Wistful","WIST-ful","उदासी भरी लालसा","He felt wistful about missed opportunities.",4],
+    ["Zealot","ZEL-ut","कट्टर अनुयायी","Be passionate but not a zealot.",4],
+    ["Zenith","ZEE-nith","शिखर / उच्चतम बिंदु","Reach the zenith of your potential.",4],
+  ]
+};
+
+// ===================== RENDER =====================
+function buildId(word) { return 'w_' + word.replace(/\s/g,'_'); }
+
+function renderAll() {
+  const container = document.getElementById('mainContent');
+  let html = '';
+  let totalWords = 0;
+
+  for (const [section, words] of Object.entries(wordData)) {
+    const lvl = words[0][4];
+    const badge = `<span class="badge badge-${lvl}">LVL ${lvl}</span>`;
+    html += `<div class="level-title">${section} ${badge}</div>`;
+    html += `<table data-level="${lvl}">
+      <thead><tr>
+        <th>#</th>
+        <th>WORD</th>
+        <th>PRONUNCIATION</th>
+        <th>HINDI MEANING</th>
+        <th>EXAMPLE</th>
+        <th>✓</th>
+      </tr></thead><tbody>`;
+
+    words.forEach((w, i) => {
+      const [word, pron, hindi, example, lvl] = w;
+      const id = buildId(word);
+      const saved = localStorage.getItem(id) === '1';
+      html += `<tr id="row_${id}" class="${saved ? 'learned' : ''}" data-level="${lvl}" data-word="${word.toLowerCase()}" data-hidden="false">
+        <td>${totalWords + i + 1}</td>
+        <td>${word}</td>
+        <td>${pron}</td>
+        <td>${hindi}</td>
+        <td>${example}</td>
+        <td>
+          <div class="cb-wrap">
+            <input type="checkbox" id="${id}" ${saved ? 'checked' : ''} onchange="toggleLearned('${id}')">
+            <label class="cb-label" for="${id}">✓</label>
+          </div>
+        </td>
+      </tr>`;
+    });
+
+    html += `</tbody></table>`;
+    totalWords += words.length;
+  }
+
+  container.innerHTML = html;
+  updateProgress();
+}
+
+function toggleLearned(id) {
+  const cb = document.getElementById(id);
+  const row = document.getElementById('row_' + id);
+  if (cb.checked) {
+    localStorage.setItem(id, '1');
+    row.classList.add('learned');
+  } else {
+    localStorage.removeItem(id);
+    row.classList.remove('learned');
+  }
+  updateProgress();
+}
+
+function updateProgress() {
+  const allWords = getAllWords();
+  const total = allWords.length;
+  const learned = allWords.filter(w => localStorage.getItem(buildId(w)) === '1').length;
+  const pct = total > 0 ? Math.round((learned / total) * 100) : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${learned} / ${total} Learned`;
+  document.getElementById('percentPill').textContent = pct + '%';
+}
+
+function getAllWords() {
+  const all = [];
+  for (const words of Object.values(wordData)) words.forEach(w => all.push(w[0]));
+  return all;
+}
+
+function filterWords() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const level = document.getElementById('levelFilter').value;
+  const rows = document.querySelectorAll('tbody tr');
+  rows.forEach(row => {
+    const word = row.getAttribute('data-word') || '';
+    const lvl = row.getAttribute('data-level') || '';
+    const matchSearch = !search || word.includes(search);
+    const matchLevel = !level || lvl === level;
+    row.setAttribute('data-hidden', !(matchSearch && matchLevel));
+    row.style.display = (matchSearch && matchLevel) ? '' : 'none';
+  });
+}
+
+function showOnlyUnlearned() {
+  const rows = document.querySelectorAll('tbody tr');
+  rows.forEach(row => {
+    const id = row.id.replace('row_', '');
+    const learned = localStorage.getItem(id) === '1';
+    row.style.display = learned ? 'none' : '';
+  });
+}
+
+function showAll() {
+  const rows = document.querySelectorAll('tbody tr');
+  rows.forEach(row => row.style.display = '');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('levelFilter').value = '';
+}
+
+function resetAll() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  getAllWords().forEach(w => localStorage.removeItem(buildId(w)));
+  document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('learned'));
+  document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+  updateProgress();
+}
+
+// Init
+renderAll();
+</script>
+</body>
+</html>
